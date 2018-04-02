@@ -1,6 +1,10 @@
+//This is our Clock component.
+//The purpose of this component is to build the actual clock display.
+
 import React, { Component} from 'react';
 import './App.css';
 
+//Here we define the clock class, which has state
 class Clock extends Component {
   constructor(props) {
     super(props);
@@ -12,18 +16,23 @@ class Clock extends Component {
     }
   }
 
+  //This method simply calls the getTimeUntil methond once the page finished loading.
   componentWillMount() {
     this.getTimeUntil(this.props.deadline);
   }
 
+  //This helper method will call the getTimeUntil method every 1 second, thus
+  //re-rendering the page and updating the display.
   componentDidMount(){
     setInterval(() => this.getTimeUntil(this.props.deadline), 1000)
   }
 
+  //This method simply ensures a zero prefaces a 1 digit date (ex: October 01).
   leading0(num) {
     return num < 10 ? '0' + num :num;
   }
 
+  //This method turns state data into the amount of time until the deadline is reached.
   getTimeUntil(deadline){
     let time = Date.parse(deadline)- Date.parse(new Date());
     const seconds = Math.floor((time/1000) % 60);
