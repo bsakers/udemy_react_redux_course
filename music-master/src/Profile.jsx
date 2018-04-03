@@ -1,9 +1,14 @@
+//This is our Profile component
+//The purpose of this component is to display the searched artist information,
+//including the artist name, number of followers, image, and music genres
+
 import React, { Component } from 'react';
 import './App.css';
 
+//Here we define our Profile class, which does not have state.
+//We set our artist information to the information obtained from props.
 class Profile extends Component {
   render() {
-    console.log(this.props)
     let artist = {
       name: "",
       followers: {total: ""},

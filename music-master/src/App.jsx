@@ -1,10 +1,14 @@
+//This is our App component
+//Then purpose of this component is to fetch information from the Spotify API based
+//on the user's search, and to pass props down to the Gallery and Profile components.
+
 import React, { Component } from 'react';
 import './App.css';
 import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import Profile from './Profile';
 import Gallery from './Gallery';
 
-
+//Here we define our App class, which has state.
 class App extends Component{
   constructor(props){
     super(props);
@@ -15,15 +19,16 @@ class App extends Component{
     }
   }
 
+  //This is our search function, which based on the user's query, fetches both
+  //the artist information and along with the artist tracks, and sets them to state.
   search(){
-    console.log(this.state);
     const BASE_URL = 'https://api.spotify.com/v1/search?';
     let FETCH_URL = BASE_URL + 'q=' + this.state.query + '&type=artist&limit=1' ;
     const ALBUM_URL = 'https://api.spotify.com/v1/artists/';
     var myOptions = {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer BQD4MlDI0Xudd2xl_uQCGAr45N0e9fIQ6uHbD4p9kejt7XegWPraw9Fc7PU5eY_z-KQpBT65yi9DMeplj_x2Im49cTwOdQdLoHUfXKF6rCq4qLjte7N7d7KyqZNcAKkjNfpzkkDUrlgpuF2xNv3U5W4Sp34Iu6ZLbQ&refresh_token=AQAcqj-YOmiiXqUtqR3h9JxvOtYIcGnAQOGJZnZMSPFDXSW1UAjYzJh9XV8LDLVBZeLgxCO4J4wa0CwGFdNVlmBzYYNMklk0LMq30tqUnaKDrkKVSYaYgZx8Xc_kQ6S3v1A'
+        'Authorization': 'Bearer BQB4Rpg6PiLi9NYsbCiKmpyo4fKgO-lBzU_5l6eQ1hBY6sPHtXTeOh5rzd0Tm33qTryKWlCqy-m7HPT6D4wuJ9gQnTIfPAEiUzSQ9RBheEXXBx5H-RBJxoNLldsmqFC726YL97zqwqQ9M2rRyFNT0-RNTpBGt-_7TA&refresh_token=AQBu69kdCIl80r7fynD31RpbimAUNDRz9Xzi3LlYmvEDkFo8mPCHCo-oIVQVhc6yj-gkWllH5RepqG07ISjATJWAmsfCtAO-ANj4esFEQF1z5gwJwLr6npVyMfi5I46lGhQ'
       },
       mode: 'cors',
       cache: 'default'
@@ -45,6 +50,9 @@ class App extends Component{
     })
   }
 
+  //Here we render the search field and button, which updates the user query state.
+  //We also pass the newly fetched artist and track information to their respective
+  //components as props.
   render(){
     return(
       <div className="App">
