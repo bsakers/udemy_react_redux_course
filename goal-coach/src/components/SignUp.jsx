@@ -1,3 +1,7 @@
+//This is our switchgnUp component.
+//The purpose of this component is to render our sign-up page, and use firebase's
+//authenticator to sign up with an email and password.
+
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { Link } from 'react-router';
@@ -14,8 +18,8 @@ class SignUp extends Component{
     }
   }
 
+  //this method is called when the user clicks the sign up button.
   signUp(){
-    console.log('this.state', this.state)
     firebaseApp.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       .catch(error =>  {
         this.setState({ error: error });

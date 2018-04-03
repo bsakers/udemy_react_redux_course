@@ -1,3 +1,7 @@
+//This is our SignIn component.
+//The purpose of this component is to render our sign-in page, and use firebase's
+//authenticator to sign in with an email and password.
+
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { Link } from 'react-router';
@@ -14,8 +18,8 @@ class SignIn extends Component{
     }
   }
 
+  //This method is called when the user clicks the sign in button.
   signIn(){
-    console.log('this.state', this.state)
     firebaseApp.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .catch(error =>  {
         this.setState({ error: error });

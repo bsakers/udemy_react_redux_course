@@ -1,3 +1,5 @@
+//This is our user reducer. This allows us to set the current user within our store.
+
 import { SIGNED_IN } from '../constants';
 
 let user = {

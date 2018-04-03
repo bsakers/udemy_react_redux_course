@@ -1,7 +1,12 @@
+//This is our addGoal component
+//The purpose of this component is to allow a signed in user to create a new goal
+//and add it to the list of existing goals.
+
 import React, { Component } from 'react';
 import { goalRef } from '../firebase';
 import { connect } from 'react-redux';
 
+//Here we define our AddGoal class; the state references the new goal to be added.
 class AddGoal extends Component {
   constructor(props){
     super(props);
@@ -10,11 +15,13 @@ class AddGoal extends Component {
     }
   }
 
+  //This method allows us to push the new goal to our firebase database.
+  //Note that we use the store to access the user submitting the goal.
   addGoal(){
-    console.log('this', this)
     goalRef.push({email: this.props.user.email, goalTitle: this.state.goalTitle})
   }
 
+  //Here we render the input field and submit button
   render(){
     return (
       <div className="form-inline">
@@ -39,9 +46,10 @@ class AddGoal extends Component {
   }
 }
 
+//The below function allows us to access the store, so that we can identify the
+//current user submitting the goal.
 const mapStateToProps = (state) => {
   const {user} = state;
-  console.log('state in AddGoal.jsx', state)
   return {
     user: user
   }

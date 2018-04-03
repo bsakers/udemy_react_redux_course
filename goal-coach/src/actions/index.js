@@ -1,3 +1,6 @@
+//This is our actions files. Here we define our action creators, which return
+//our actions, thus allowing us to alter the store when dispatched to a reducer.
+
 import { SIGNED_IN, SET_GOALS, SET_COMPLETED } from '../constants';
 
 export const logUser = (email) => {
