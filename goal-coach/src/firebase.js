@@ -1,3 +1,11 @@
+//This is our firebase file, which we configure for three uses:
+//1.) initialize the app, thus allowing user log-in functionality
+//2.) create a goal reference, allowing us to store and access goals in the
+//firebase database.
+//3.) create a completed goals reference, allowing us to store and access
+//completed goals in the firebase database.
+//All of the below is accessible via the firebase library.
+
 import * as firebase from 'firebase';
 
 const config = {
